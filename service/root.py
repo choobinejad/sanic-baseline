@@ -7,15 +7,24 @@ root_blueprint = Blueprint('root', url_prefix='/', strict_slashes=True)
 root_blueprint.static('favicon.ico', './static/favicon.ico')
 
 
-class GenericResponse:
-    hello = doc.String('It just says \'world.\'')
-    query_params = doc.Dictionary('Your query string parameters.')
-    integer_arg = doc.Integer('Your integer argument.')
+@root_blueprint.route('/', methods=['GET', 'OPTIONS'])
+@doc.summary("Hello, root path.")
+@doc.produces(json)
+async def root(request):
+    """
+    The API root function.
+    :param request: sanic.request object
+    :return: sanic.response.json
+    """
+    r = dict(
+        hello='world'
+    )
+    return json(r)
 
 
 @root_blueprint.route('/<integer_arg:int>', methods=['GET', 'OPTIONS'])
-@doc.summary("Says Hello to the root path.")
-@doc.produces(GenericResponse)
+@doc.summary("Echo the args.")
+@doc.produces(json)
 async def root(request, integer_arg: int):
     """
     The API root function.
