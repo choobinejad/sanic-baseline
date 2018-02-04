@@ -52,3 +52,4 @@ docs/_build/
 /service/test/ssl/certs/serial*
 /service/test/ssl/certs/index.txt*
 /service/test/ssl/certs/*.csr
+/service/test/ssl/certs/*.p12

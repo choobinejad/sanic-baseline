@@ -1,6 +1,8 @@
-from service import config
+"""
+The single entrypoint for starting the sanic-baseline service's web server.
+"""
+
 from service.app import app, context
-from service.root import *
 
 
 if __name__ == "__main__":

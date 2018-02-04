@@ -13,7 +13,8 @@ root_blueprint.static('favicon.ico', './static/favicon.ico')
 async def root(request):
     """
     The API root function.
-    :param request: sanic.request object
+
+    :param request: sanic.request object (supplied by sanic)
     :return: sanic.response.json
     """
     r = dict(
@@ -28,7 +29,8 @@ async def root(request):
 async def root(request, integer_arg: int):
     """
     The API root function.
-    :param request: sanic.request object
+
+    :param request: sanic.request object (supplied by sanic)
     :param integer_arg: a required integer argument
     :return: sanic.response.json
     """
